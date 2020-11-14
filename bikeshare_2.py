@@ -93,7 +93,8 @@ def time_stats(df):
     # display the most common month
     try:
         most_month = trip_dt.month.median()
-        print('The most common month is %s.\n' % MONTHS[int(most_month)-1])
+        print('The most common month is %s.\n' %
+              MONTHS[int(most_month)-1].title())
     except:
         print('Couldn\'t calculate the most common month.')
 
@@ -101,14 +102,15 @@ def time_stats(df):
     try:
         most_day = trip_dt.weekday.median()
         print('The most common day of the week is %s.\n' %
-              WEEKDAYS[int(most_day)])
+              WEEKDAYS[int(most_day)].title())
     except:
         print('Couldn\'t calculate the most common day.')
 
     # display the most common start hour
     try:
         most_hour = trip_dt.hour.median()
-        print('The most common start hour is %s.\n' % most_hour)
+        print('The most common start hour is %s.\n' %
+              str(datetime.timedelta(hours=most_hour)))
     except:
         print('Couldn\'t calculate the most common hour.')
 
@@ -201,14 +203,30 @@ def user_stats(df):
     try:
         year_of_birth = df['Birth Year'].astype(int)
         print('\nUser age information')
-        print('The earliest year of birth is %s ' % year_of_birth.min())
-        print('The most recent year of birth is %s ' % year_of_birth.max())
-        print('The most recent year of birth is %s ' % year_of_birth.median())
+        print('The earliest year of birth is %s ' % int(year_of_birth.min()))
+        print('The most recent year of birth is %s ' %
+              int(year_of_birth.max()))
+        print('The most common year of birth is %s ' %
+              int(year_of_birth.median()))
     except:
         print('\nCouldn\'t get information about the year of birth')
 
     print('\nThis took %s seconds.' % (time.time() - start_time))
     print('-'*40)
+
+
+def show_raw_data(city):
+    """ Show the raw data for the user 5rows at a time """
+    raw_data = pd.read_csv(CITY_DATA[city])
+    show = input('\nWould you like to watch the raw data? Enter yes or no.\n')
+    start = 0
+    end = 5
+    while show.lower() == 'yes':
+        print(raw_data[start:end])
+        show = input(
+            '\nWould you like to see more raw data? Enter yes or no.\n')
+        start += 5
+        end += 5
 
 
 def main():
@@ -220,6 +238,7 @@ def main():
         station_stats(df)
         trip_duration_stats(df)
         user_stats(df)
+        show_raw_data(city)
 
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
