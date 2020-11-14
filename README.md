@@ -1,8 +1,8 @@
 # **US Bikeshare Data Analysis**
 
-This project started as an assesment for for the **Udacity Data Analysis Professional Track**.\
+This project started as an assesment for for the **Udacity Data Analysis Professional Track**.
 
-The goal is to build an interactive application where the user can choose the input data between three different cities: Chicago, New York City and Washington.\
+The goal is to build an interactive application where the user can choose the input data between three different cities: Chicago, New York City and Washington.
 
 The user can then choose whether to filter the data by month or weekday, both or no filtering at all.
 Then the Following Statistics are being evaluated:
@@ -18,13 +18,16 @@ Then the Following Statistics are being evaluated:
    * The user gender information (Male or Female).
    * The user age information (eldest, youngest and the most common age).
 
-Languages used:\
+Languages used:
+
 * Python
 
 Libraries required:
+
 * NumPy
 * Panadas
 
 Tools Recommended:
+
 * Vscode
 * Jupyter notebooks
