@@ -10,6 +10,14 @@ MONTHS = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'all']
 WEEKDAYS = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun', 'all']
 
 
+def timer(function):
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        function(*args, **kwargs)
+        print("\nThis took %s seconds." % (time.time() - start_time))
+        print('-'*40)
+    return wrapper
+
 def get_filters():
     """
     Asks user to specify a city, month, and day to analyze.
@@ -64,7 +72,6 @@ def get_filters():
     print('-'*40)
     return city, month, day
 
-
 def load_data(city, month, day):
     """
     Loads data for the specified city and filters by month and day if applicable.
@@ -94,12 +101,11 @@ def load_data(city, month, day):
 
     return df
 
-
+@timer
 def time_stats(df):
     """Displays statistics on the most frequent times of travel."""
 
     print('\nCalculating The Most Frequent Times of Travel...\n')
-    start_time = time.time()
 
     # get the trip datetime data
     trip_dt = df['Start Time'].dt
@@ -126,16 +132,11 @@ def time_stats(df):
     except:
         print('Couldn\'t calculate the most common hour.\n')
 
-    print("\nThis took %s seconds." % (time.time() - start_time))
-    print('-'*40)
-
-
+@timer
 def station_stats(df):
     """Displays statistics on the most popular stations and trip."""
 
     print('\nCalculating The Most Popular Stations and Trip...\n')
-    start_time = time.time()
-
     # display most commonly used start station
     try:
         most_start_station = df['Start Station'].value_counts().keys()[0]
@@ -157,15 +158,12 @@ def station_stats(df):
     except:
         print('Couldn\'t calculate the most common route between station.\n')
 
-    print("\nThis took %s seconds.\n" % (time.time() - start_time))
-    print('-'*40)
-
-
+@timer
 def trip_duration_stats(df):
     """Displays statistics on the total and average trip duration."""
 
     print('\nCalculating Trip Duration...\n')
-    start_time = time.time()
+
 
     # display total travel time
     try:
@@ -183,15 +181,12 @@ def trip_duration_stats(df):
     except:
         print('Couldn\'t calculate mean travel time.\n')
 
-    print('\nThis took %s seconds.' % (time.time() - start_time))
-    print('-'*40)
-
-
+@timer
 def user_stats(df):
     """Displays statistics on bikeshare users."""
 
     print('\nCalculating User Stats...\n')
-    start_time = time.time()
+
 
     # Display counts of user types
     try:
@@ -224,13 +219,12 @@ def user_stats(df):
     except:
         print('Couldn\'t get information about the users age.\n')
 
-    print('\nThis took %s seconds.' % (time.time() - start_time))
-    print('-'*40)
+
 
 
 def show_raw_data(city):
     """ Displays the raw data for the user 5 rows at a time """
-    #read the raw data without any filters or cleaning
+    # read the raw data without any filters or cleaning
     raw_data = pd.read_csv(CITY_DATA[city])
     show = input(
         '\nWould you like to see the raw data yourself? Enter yes or no.\n')
