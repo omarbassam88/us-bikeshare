@@ -45,7 +45,7 @@ In some cities some columns are totally missing like the Gender and Birth Year c
 The first challenge was converting the Start Time column from string to datetime object from which we could extract the month, weekday and hour.this was easily achieved with pandas function `pd.to_datetime(df['Start Time'])`.
 
 To find the most common route the Start Station and End Station columns where combined into one column to be able to analyze the data much easier as follows:  
-```
+```Python
 df['routes'] = 'from "' + df['Start Station'] + \ '" to "' + df['End Station'] + '"'
 ```
 
