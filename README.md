@@ -15,11 +15,16 @@ The user can then choose whether to filter the data by month or weekday, both or
 Then the Following Statistics are being evaluated:
 
 1. The most frequent time of travel:
-   - The most frequent month, weekday and hour.
-2. The most popular Station and trip:
-   - The most common start station, end station and the most common combination of start and end stations.
+   - The most common month.
+   - The most common day of the week.
+   - The most common hour.
+2. The most popular station and trip:
+   - The most common start station.
+   - Teh most common end station.
+   - The most common combination of start and end stations.
 3. The trip duration:
-   - The total time traveled and the mean travel time.
+   - The total time traveled.
+   - The mean travel time.
 4. The User Data:
    - The user type(Subscriber, Customer, etc.).
    - The user gender information (Male or Female).
@@ -27,7 +32,9 @@ Then the Following Statistics are being evaluated:
 
 To run the main program:
 
-`python bikeshare.py`
+```
+python bikeshare.py
+```
 
 an additional jupyter nootebook `bikeshare.ipynb` was used for testing and exploration of data.
 
@@ -38,7 +45,9 @@ In some cities some columns are totally missing like the Gender and Birth Year c
 The first challenge was converting the Start Time column from string to datetime object from which we could extract the month, weekday and hour.this was easily achieved with pandas function `pd.to_datetime(df['Start Time'])`.
 
 To find the most common route the Start Station and End Station columns where combined into one column to be able to analyze the data much easier as follows:  
-`df['routes'] = 'from "' + df['Start Station'] + \ '" to "' + df['End Station'] + '"'`
+```
+df['routes'] = 'from "' + df['Start Station'] + \ '" to "' + df['End Station'] + '"'
+```
 
 Formating the datetime objects to display it to the user was done using `time.gmtime` and `time.strftime` functions.
 
@@ -53,7 +62,9 @@ Formating the datetime objects to display it to the user was done using `time.gm
 
 if you don't have the requirements you cna install them usin [pip](https://pypi.org/project/pip/):
 
-`pip install -r requirements.txt`
+```
+pip install -r requirements.txt
+```
 
 ## Recommended Tools:
 
