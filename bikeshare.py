@@ -196,17 +196,17 @@ def user_stats(df):
     # Display counts of user types
     try:
         user_types = df['User Type'].value_counts()
-        print('User Type information:.\n')
+        print('User Type information:\n')
         for i in range(user_types.size):
             print('%s of the users are %ss.\n' %
                   (user_types[i], user_types.keys()[i]))
     except:
-        print('Couldn\'t get User type information..\n')
+        print('Couldn\'t get User type information.\n')
 
     # Display counts of gender
     try:
         user_gender = df['Gender'].value_counts()
-        print('\nUser Gender Information:\.\n')
+        print('\nUser Gender Information:\n')
         for i in range(user_gender.size):
             print('%s of the users are %ss.\n' %
                   (user_gender[i], user_gender.keys()[i]))
@@ -215,7 +215,7 @@ def user_stats(df):
     # Display earliest, most recent, and most common year of birth
     try:
         year_of_birth = df['Birth Year'].astype(int)
-        print('\nUser age information:\n')
+        print('\nUser Age information:\n')
         print('The earliest year of birth is %s.\n' % int(year_of_birth.min()))
         print('The most recent year of birth is %s.\n' %
               int(year_of_birth.max()))
