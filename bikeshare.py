@@ -11,6 +11,7 @@ WEEKDAYS = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun', 'all']
 
 
 def timer(function):
+    """ A decorator that calculates and displays the execution time for a given function """
     def wrapper(*args, **kwargs):
         start_time = time.time()
         function(*args, **kwargs)
