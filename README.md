@@ -51,6 +51,10 @@ Formating the datetime objects to display it to the user was done using `time.gm
 - [NumPy](https://numpy.org/) (1.18 or above recommended)
 - [Panadas](https://pandas.pydata.org/) (1.4 or above recommended)
 
+if you don't have the requirements you cna install them usin [pip](https://pypi.org/project/pip/):
+
+`pip install -r requirements.txt`
+
 ## Recommended Tools:
 
 - [VScode](https://code.visualstudio.com/)
