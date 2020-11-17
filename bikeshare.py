@@ -92,7 +92,7 @@ def time_stats(df):
 
     # display the most common month
     try:
-        most_month = trip_dt.month.median()
+        most_month = trip_dt.month.mode()[0]
         print('The most common month is %s.\n' %
               MONTHS[int(most_month)-1].title())
     except:
@@ -100,7 +100,7 @@ def time_stats(df):
 
     # display the most common day of week
     try:
-        most_day = trip_dt.weekday.median()
+        most_day = trip_dt.weekday.mode()[0]
         print('The most common day of the week is %s.\n' %
               WEEKDAYS[int(most_day)].title())
     except:
@@ -108,7 +108,7 @@ def time_stats(df):
 
     # display the most common start hour
     try:
-        most_hour = trip_dt.hour.median()
+        most_hour = trip_dt.hour.mode()[0]
         print('The most common start hour is %s.\n' %
               str(datetime.timedelta(hours=most_hour)))
     except:
@@ -207,7 +207,7 @@ def user_stats(df):
         print('The most recent year of birth is %s ' %
               int(year_of_birth.max()))
         print('The most common year of birth is %s ' %
-              int(year_of_birth.median()))
+              int(year_of_birth.mode()[0]))
     except:
         print('\nCouldn\'t get information about the year of birth')
 
