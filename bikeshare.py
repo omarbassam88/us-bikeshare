@@ -98,11 +98,11 @@ def load_data(city, month, day):
     # convert Start Time from str to datetime
     df['Start Time'] = pd.to_datetime(df['Start Time'])
     # filter data by month
-    if month != 'all':
+    if month.lower() != 'all':
         month_index = MONTHS.index(month) + 1
         df = df[df['Start Time'].dt.month == month_index]
     # filter data by day
-    if day != 'all':
+    if day.lower() != 'all':
         day_index = WEEKDAYS.index(day)
         df = df[df['Start Time'].dt.weekday == day_index]
 
