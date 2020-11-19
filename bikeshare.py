@@ -15,9 +15,11 @@ def timer(function):
     def wrapper(*args, **kwargs):
         start_time = time.time()
         function(*args, **kwargs)
-        print("\nThis took %s seconds." % (time.time() - start_time))
+        print("\nThis claculation took %s seconds." %
+              (time.time() - start_time))
         print('-'*40)
     return wrapper
+
 
 def get_filters():
     """
@@ -28,9 +30,15 @@ def get_filters():
         (str) month - name of the month to filter by, or "all" to apply no month filter
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
-    print('******US BIKESHARE DATA******\n')
-    print('\nData provided by Motivate, a bike share system provider for many major cities in the United States.Randomly selected data for the first six months of 2017 are provided for three major cities in the US.\n')
-    print('\nReady to explore some US bikeshare data?\nLet\'s get started!\n')
+    print("""
+******US BIKESHARE DATA******
+
+Data provided by Motivate, a bike share system provider for many major cities in the United States.
+Randomly selected data for the first six months of 2017 are provided for three major cities in the US.
+
+Ready to explore some US bikeshare data?
+Let's get started!
+    """)
     # get user input for city (chicago, new york city, washington)
     city_choice = input(
         'Please choose a city:\n1)\'C\' or \'c\' for chicago.\n2)\'N\' or \'n\' for new york\n3)\'W\' or \'w\' city or washington?\n')
@@ -73,6 +81,7 @@ def get_filters():
     print('-'*40)
     return city, month, day
 
+
 def load_data(city, month, day):
     """
     Loads data for the specified city and filters by month and day if applicable.
@@ -101,6 +110,7 @@ def load_data(city, month, day):
     df = df.dropna(axis=0)
 
     return df
+
 
 @timer
 def time_stats(df):
@@ -133,6 +143,7 @@ def time_stats(df):
     except:
         print('Couldn\'t calculate the most common hour.\n')
 
+
 @timer
 def station_stats(df):
     """Displays statistics on the most popular stations and trip."""
@@ -159,12 +170,12 @@ def station_stats(df):
     except:
         print('Couldn\'t calculate the most common route between station.\n')
 
+
 @timer
 def trip_duration_stats(df):
     """Displays statistics on the total and average trip duration."""
 
     print('\nCalculating Trip Duration...\n')
-
 
     # display total travel time
     try:
@@ -182,12 +193,12 @@ def trip_duration_stats(df):
     except:
         print('Couldn\'t calculate mean travel time.\n')
 
+
 @timer
 def user_stats(df):
     """Displays statistics on bikeshare users."""
 
     print('\nCalculating User Stats...\n')
-
 
     # Display counts of user types
     try:
@@ -219,8 +230,6 @@ def user_stats(df):
               int(year_of_birth.mode()[0]))
     except:
         print('Couldn\'t get information about the users age.\n')
-
-
 
 
 def show_raw_data(city):
