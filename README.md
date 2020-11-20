@@ -32,41 +32,48 @@ Then the Following Statistics are being evaluated:
 
 To run the main program:
 
-```
+```Bash
 python bikeshare.py
 ```
 
-an additional jupyter nootebook `bikeshare.ipynb` was used for testing and exploration of data.
+an additional jupyter notebook `bikeshare.ipynb` was used for testing and exploration of data.
 
-## Challenges:
+## Challenges
 
 In some cities some columns are totally missing like the Gender and Birth Year columns in the data for Washington. Also, the data contained a lot of missing data. So, the code is full of try/except blocks to handle such errors or missing data without crashing hte program.
 
 The first challenge was converting the Start Time column from string to datetime object from which we could extract the month, weekday and hour.this was easily achieved with pandas function `pd.to_datetime(df['Start Time'])`.
 
 To find the most common route the Start Station and End Station columns where combined into one column to be able to analyze the data much easier as follows:  
+
 ```Python
 df['routes'] = 'from "' + df['Start Station'] + \ '" to "' + df['End Station'] + '"'
 ```
 
 Formating the datetime objects to display it to the user was done using `time.gmtime` and `time.strftime` functions.
 
-## Languages used:
+## Languages used
 
 - [Python](https://www.python.org) (3.8 or above recommended)
 
-## Requirements:
+## Requirements
 
 - [NumPy](https://numpy.org/) (1.18 or above recommended)
 - [Panadas](https://pandas.pydata.org/) (1.4 or above recommended)
 
-if you don't have the requirements you cna install them usin [pip](https://pypi.org/project/pip/):
+if you don't have the requirements you can install them using [pip](https://pypi.org/project/pip/):
 
-```
+```Bash
 pip install -r requirements.txt
 ```
 
-## Recommended Tools:
+if you are using conda use the command below instead:
+
+```Bash
+conda env create -f environment.yaml
+```
+
+## Recommended Tools
 
 - [VScode](https://code.visualstudio.com/)
 - [Jupyter Notebooks](https://jupyter.org/)
