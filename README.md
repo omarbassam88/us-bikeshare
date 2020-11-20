@@ -1,6 +1,6 @@
 # **US Bikeshare Data Analysis**
 
-This project started as an assesment for for the **Udacity Data Analysis Professional Track**.
+This project started as an assessment for for the **Udacity Data Analysis Professional Track**.
 
 Data provided by [Motivate](https://www.motivateco.com/), a bike share system provider for many major cities in the United States.
 Randomly selected data for the first six months of 2017 are provided for three major cities in the US:
